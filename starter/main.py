@@ -12,6 +12,7 @@ from pygame.locals import *
 import time
 from pojo.HeroPlane import *
 from pojo.InitScreen import *
+from pojo.EnemyPlane import *
 
 '''
     启动方法
@@ -20,12 +21,14 @@ from pojo.InitScreen import *
 
 def main():
     screen = InitScreen()
-
     hero = HeroPlane(screen.getScreen())
+    enemy = EnemyPlane(screen.getScreen())
 
     while True:
         screen.display()
         hero.display()
+        enemy.display()
+        enemy.move()
         pygame.display.update()
 
         keyReader(hero)
