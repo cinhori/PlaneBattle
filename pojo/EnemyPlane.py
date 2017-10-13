@@ -33,6 +33,8 @@ class EnemyPlane():
         for bullet in self.bulletList:
             bullet.display()
             bullet.move()
+            if bullet.judge():
+                self.bulletList.remove(bullet)
 
     def move_left(self):
         self.x += 5

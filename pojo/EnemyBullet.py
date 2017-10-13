@@ -23,3 +23,8 @@ class EnemyBullet():
     def move(self):
         self.y += 5
 
+    def judge(self):
+        if self.y > 750:
+            return True
+        else:
+            return False

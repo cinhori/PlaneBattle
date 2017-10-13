@@ -25,6 +25,8 @@ class HeroPlane:
         for bullet in self.bulletList:
             bullet.display()
             bullet.move()
+            if bullet.judge():
+                self.bulletList.remove(bullet)
 
     def moveLeft(self):
         self.x -= 5

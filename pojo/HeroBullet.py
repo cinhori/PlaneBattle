@@ -22,3 +22,9 @@ class HeroBullet:
 
     def move(self):
         self.y -= 20
+
+    def judge(self):
+        if self.y < 10:
+            return True
+        else:
+            return False
