@@ -9,47 +9,28 @@
 # @Contact : lilei93s@163.com
 from pojo.EnemyBullet import *
 import random
+from BasePlane import *
 
 
 """
     敌机类
 """
-import pygame
 
 
-class EnemyPlane():
+class EnemyPlane(BasePlane):
     def __init__(self, screen):
-        self.x = 0
-        self.y = 0
-        self.screen = screen
-        self.__image = pygame.image.load("../photo/enemy0.png")
+        BasePlane.__init__(self, screen, 0, 0, "../photo/enemy0.png")
         self.direction = "right"
-        self.bulletList = []
 
     def display(self):
-        self.screen.blit(self.__image, (self.x, self.y))
+        super(EnemyPlane, self).display()
         self.fire()
-
-        for bullet in self.bulletList:
-            bullet.display()
-            bullet.move()
-            if bullet.judge():
-                self.bulletList.remove(bullet)
-
-    def move_left(self):
-        self.x += 5
-
-    def move_down(self):
-        self.y += 5
-
-    def move_right(self):
-        self.x -= 5
 
     def move(self):
         if self.direction == "right":
-            self.move_left()
+            self.moveRight()
         elif self.direction == "left":
-            self.move_right()
+            self.moveLeft()
 
         if self.x > 480 - 50:
             self.direction = "left"
@@ -58,5 +39,6 @@ class EnemyPlane():
 
     def fire(self):
         randomNum = random.randint(1, 100)
+        bullet = EnemyBullet(self.screen, self.x, self.y)
         if randomNum in [5, 10, 15, 20]:
-            self.bulletList.append(EnemyBullet(self.screen, self.x, self.y))
+            BasePlane.fire(self, bullet)

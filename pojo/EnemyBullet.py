@@ -8,17 +8,13 @@
 # @Software: PyCharm
 # @Contact : lilei93s@163.com
 import pygame
+from BaseBullet import *
 
 
-class EnemyBullet():
+class EnemyBullet(BaseBullet):
     def __init__(self, screen, x, y):
-        self.x = x + 25
-        self.y = y + 40
-        self.screen = screen
-        self.image = pygame.image.load("../photo/bullet1.png")
-
-    def display(self):
-        self.screen.blit(self.image, (self.x, self.y))
+        super(EnemyBullet, self)\
+            .__init__(screen, x + 25, y + 40, "../photo/bullet1.png")
 
     def move(self):
         self.y += 5

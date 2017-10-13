@@ -8,17 +8,13 @@
 # @Software: PyCharm
 # @Contact : lilei93s@163.com
 import pygame
+from BaseBullet import *
 
 
-class HeroBullet:
+class HeroBullet(BaseBullet):
     def __init__(self, screen, x, y):
-        self.x = x + 40
-        self.y = y - 20
-        self.screen = screen
-        self.image = pygame.image.load("../photo/bullet.png")
-
-    def display(self):
-        self.screen.blit(self.image, (self.x, self.y))
+        super(HeroBullet, self)\
+            .__init__(screen, x + 40, y - 20, "../photo/bullet.png")
 
     def move(self):
         self.y -= 20

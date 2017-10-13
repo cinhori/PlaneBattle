@@ -7,32 +7,14 @@
 # @File    : HeroPlane.py
 # @Software: PyCharm
 # @Contact : lilei93s@163.com
-import pygame
 from HeroBullet import HeroBullet
+from BasePlane import *
 
 
-class HeroPlane:
+class HeroPlane(BasePlane):
     def __init__(self, screen):
-        self.x = 210
-        self.y = 700
-        self.screen = screen
-        self.__image = pygame.image.load("../photo/hero1.png").convert()
-        self.bulletList = []
-
-    def display(self):
-        self.screen.blit(self.__image, (self.x, self.y))
-
-        for bullet in self.bulletList:
-            bullet.display()
-            bullet.move()
-            if bullet.judge():
-                self.bulletList.remove(bullet)
-
-    def moveLeft(self):
-        self.x -= 5
-
-    def moveRight(self):
-        self.x += 5
+        BasePlane.__init__(self, screen, 210, 700, "../photo/hero1.png")
 
     def fire(self):
-        self.bulletList.append(HeroBullet(self.screen, self.x, self.y))
+        bullet = HeroBullet(self.screen, self.x, self.y)
+        BasePlane.fire(self, bullet)
