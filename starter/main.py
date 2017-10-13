@@ -30,7 +30,7 @@ def main():
 
         keyReader(hero)
 
-        time.sleep(0.01)
+        time.sleep(0.05)
 
 
 def keyReader(hero):
@@ -46,14 +46,15 @@ def keyReader(hero):
             # 检测按键是否是a或者left
             if event.key == K_a or event.key == K_LEFT:
                 print('left')
-                hero.x -= 5
+                hero.moveLeft()
             # 检测按键是否是d或者right
             elif event.key == K_d or event.key == K_RIGHT:
                 print('right')
-                hero.x += 5
+                hero.moveRight()
             # 检测按键是否是空格键
             elif event.key == K_SPACE:
                 print('space')
+                hero.fire()
 
 
 if __name__ == "__main__":
