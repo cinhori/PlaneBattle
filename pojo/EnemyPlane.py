@@ -19,7 +19,10 @@ from BasePlane import *
 
 class EnemyPlane(BasePlane):
     def __init__(self, screen):
-        BasePlane.__init__(self, screen, 0, 0, "../photo/enemy0.png")
+        self.imageList = ["../photo/enemy0.png", "../photo/enemy0_down1.png",
+                          "../photo/enemy0_down2.png", "../photo/enemy0_down3.png",
+                          "../photo/enemy0_down4.png"]
+        BasePlane.__init__(self, screen, 0, 0, 51, 39,  self.imageList)
         self.direction = "right"
 
     def display(self):

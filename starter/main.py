@@ -33,6 +33,12 @@ def main():
 
         keyReader(hero)
 
+        if not hero.hit and hero.isHit(enemy.bulletList):
+            hero.hit = True
+
+        if not enemy.hit and enemy.isHit(hero.bulletList):
+            enemy.hit = True
+
         time.sleep(0.05)
 
 
@@ -54,6 +60,9 @@ def keyReader(hero):
             elif event.key == K_d or event.key == K_RIGHT:
                 print('right')
                 hero.moveRight()
+            elif event.key == K_b:
+                print('boom')
+                hero.hit = True
             # 检测按键是否是空格键
             elif event.key == K_SPACE:
                 print('space')

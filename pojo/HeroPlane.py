@@ -13,7 +13,10 @@ from BasePlane import *
 
 class HeroPlane(BasePlane):
     def __init__(self, screen):
-        BasePlane.__init__(self, screen, 210, 700, "../photo/hero1.png")
+        self.imageList = ["../photo/hero1.png", "../photo/hero_blowup_n1.png",
+                          "../photo/hero_blowup_n2.png", "../photo/hero_blowup_n3.png",
+                          "../photo/hero_blowup_n4.png"]
+        BasePlane.__init__(self, screen, 210, 700, 100, 124, self.imageList)
 
     def fire(self):
         bullet = HeroBullet(self.screen, self.x, self.y)
