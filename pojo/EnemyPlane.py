@@ -7,6 +7,9 @@
 # @File    : EnemyPlane.py
 # @Software: PyCharm
 # @Contact : lilei93s@163.com
+from pojo.EnemyBullet import *
+import random
+
 
 """
     敌机类
@@ -21,9 +24,15 @@ class EnemyPlane():
         self.screen = screen
         self.__image = pygame.image.load("../photo/enemy0.png")
         self.direction = "right"
+        self.bulletList = []
 
     def display(self):
         self.screen.blit(self.__image, (self.x, self.y))
+        self.fire()
+
+        for bullet in self.bulletList:
+            bullet.display()
+            bullet.move()
 
     def move_left(self):
         self.x += 5
@@ -45,6 +54,7 @@ class EnemyPlane():
         elif self.x < 0:
             self.direction = "right"
 
-
     def fire(self):
-        pass
+        randomNum = random.randint(1, 100)
+        if randomNum in [5, 10, 15, 20]:
+            self.bulletList.append(EnemyBullet(self.screen, self.x, self.y))
